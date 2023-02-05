@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import EpisodeDetail from "../components/EpisodeDetail"
 import { PodcastContext } from "../context/PodcastContext"
 
 const EpisodePage = () => {
@@ -22,9 +23,7 @@ const EpisodePage = () => {
 
   return (
     <>
-      <h3>Podcast {podcastId} Episode {episodeId}!</h3>
-      <pre>podcast: {JSON.stringify(podcast, null, 2)}</pre>
-      <pre>episode: {JSON.stringify(episode, null, 2)}</pre>
+      <EpisodeDetail episode={episode} />
     </>
   )
 }
