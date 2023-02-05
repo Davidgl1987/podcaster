@@ -1,5 +1,5 @@
 # Podcaster
-https://davidgl1987.github.io/
+https://davidgl1987.github.io/podcaster
 
 Aplicación para escuchar podcasts musicales desarrollada con:
 - [Vite](https://vitejs.dev/)
