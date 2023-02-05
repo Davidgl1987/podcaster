@@ -10,7 +10,7 @@ const PodcastPage = () => {
 
   const [ episodes, setEpisodes ] = useState([])
 
-  const podcast = podcasts.find(podcast => podcast.id.attributes['im:id'] === podcastId)
+  const podcast = podcasts.find(podcast => podcast.id === podcastId)
 
   useEffect(() => {
     getPodcastEpisodes(podcastId).then(data => setEpisodes(data))
