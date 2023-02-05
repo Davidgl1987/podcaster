@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from "react"
+import { Card, Col, Row, Stack } from "react-bootstrap"
 import { useParams } from "react-router-dom"
+import EpisodesList from "../components/EpisodesList"
+import PodcastDetail from "../components/PodcastDetail"
 import { PodcastContext } from "../context/PodcastContext"
 
 const PodcastPage = () => {
@@ -19,11 +22,19 @@ const PodcastPage = () => {
   if (!podcast) return null
 
   return (
-    <>
-      <h3>Podcast {podcastId}!</h3>
-      <pre>podcast: {JSON.stringify(podcast, null, 2)}</pre>
-      <pre>episodes: {JSON.stringify(episodes, null, 2)}</pre>
-    </>
+    <Row>
+      <Col lg={3} md={5}>
+        <PodcastDetail podcast={podcast} />
+      </Col>
+      <Col lg={9} md={7}>
+        <Stack>
+          <Card className="shadow p-2 px-3 mb-3">
+            <Card.Title>Episodes: {episodes.length}</Card.Title>
+          </Card>
+          <EpisodesList episodes={episodes} />
+        </Stack>
+      </Col>
+    </Row>
   )
 }
 
