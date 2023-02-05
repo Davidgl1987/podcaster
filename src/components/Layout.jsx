@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useMemo } from "react"
 import { Col, Container, Row } from "react-bootstrap"
 import { Outlet, useParams } from "react-router-dom"
 import { PodcastContext } from "../context/PodcastContext"
@@ -11,7 +11,9 @@ const Layout = () => {
 
   const { podcasts } = useContext(PodcastContext)
   
-  const podcast = podcasts?.find(podcast => podcast.id === podcastId)
+  const podcast = useMemo(() => 
+    podcasts?.find(podcast => podcast.id === podcastId),
+  [podcasts, podcastId])
 
   if (!podcast) return (
     <Container>

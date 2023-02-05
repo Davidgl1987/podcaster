@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 import { fetchEpisodes, fetchPodcasts } from "../services/api";
 
 export const PodcastContext = createContext()
@@ -37,10 +37,12 @@ export const PodcastContextProvider = ({ children }) => {
     getPodcasts()
   }, [])
 
+  const value = useMemo(() => {
+    return { loading, podcasts, getPodcastEpisodes }
+  }, [loading, podcasts])
+
   return (
-    <PodcastContext.Provider value={{
-      loading, podcasts, getPodcastEpisodes
-    }}>
+    <PodcastContext.Provider value={value}>
       {children}
     </PodcastContext.Provider>
   )

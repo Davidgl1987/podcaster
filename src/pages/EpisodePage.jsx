@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import { useParams } from "react-router-dom"
 import EpisodeDetail from "../components/EpisodeDetail"
 import { PodcastContext } from "../context/PodcastContext"
@@ -11,9 +11,13 @@ const EpisodePage = () => {
 
   const [ episodes, setEpisodes ] = useState([])
 
-  const podcast = podcasts.find(podcast => podcast.id === podcastId)
+  const podcast = useMemo(() => 
+    podcasts.find(podcast => podcast.id === podcastId),
+  [podcasts, podcastId])
 
-  const episode = episodes.find(episode => episode.id === Number(episodeId))
+  const episode = useMemo(() => 
+    episodes.find(episode => episode.id == episodeId),
+  [episodes, episodeId])
 
   useEffect(() => {
     getPodcastEpisodes(podcastId).then(data => setEpisodes(data))

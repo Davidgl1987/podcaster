@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import { Card, Stack } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import EpisodesList from "../components/EpisodesList"
@@ -12,7 +12,9 @@ const PodcastPage = () => {
 
   const [ episodes, setEpisodes ] = useState([])
 
-  const podcast = podcasts.find(podcast => podcast.id === podcastId)
+  const podcast = useMemo(() => 
+    podcasts.find(podcast => podcast.id === podcastId),
+  [podcasts, podcastId])
 
   useEffect(() => {
     getPodcastEpisodes(podcastId).then(data => setEpisodes(data))
