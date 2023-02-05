@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
 import { PodcastContextProvider } from './context/PodcastContext'
 import EpisodePage from './pages/EpisodePage'
 import HomePage from './pages/HomePage'
@@ -10,7 +11,7 @@ function App() {
     <BrowserRouter>
       <PodcastContextProvider>
         <Routes>
-          <Route path="/">
+          <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="podcast/:podcastId" element={<PodcastPage />} />
             <Route path="podcast/:podcastId/episode/:episodeId" element={<EpisodePage />} />
