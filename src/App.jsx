@@ -8,13 +8,13 @@ import PodcastPage from './pages/PodcastPage'
 function App() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/podcaster'>
       <PodcastContextProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route path="podcast/:podcastId" element={<PodcastPage />} />
-            <Route path="podcast/:podcastId/episode/:episodeId" element={<EpisodePage />} />
+            <Route path="/podcast/:podcastId" element={<PodcastPage />} />
+            <Route path="/podcast/:podcastId/episode/:episodeId" element={<EpisodePage />} />
             <Route path="*" element={<HomePage />} />
           </Route>
         </Routes>
