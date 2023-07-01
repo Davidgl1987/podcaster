@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { fetchEpisodes, fetchPodcasts } from "../services/api";
 
 export const PodcastContext = createContext()
@@ -48,3 +48,5 @@ export const PodcastContextProvider = ({ children }) => {
   )
 
 }
+
+export const usePodcastContext = () => useContext(PodcastContext)

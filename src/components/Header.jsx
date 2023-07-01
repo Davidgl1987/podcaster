@@ -1,12 +1,11 @@
-import { useContext } from "react"
 import { Container, Navbar } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { PodcastContext } from "../context/PodcastContext"
+import { usePodcastContext } from "../context/PodcastContext"
 import LoadingSpinner from "./LoadingSpinner"
 
 const Header = () => {
 
-  const { loading } = useContext(PodcastContext)
+  const { loading } = usePodcastContext()
 
   return (
     <Navbar sticky="top" className="border-bottom mb-3 bg-white">

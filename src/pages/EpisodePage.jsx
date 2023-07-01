@@ -1,13 +1,13 @@
-import { useContext, useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useParams } from "react-router-dom"
 import EpisodeDetail from "../components/EpisodeDetail"
-import { PodcastContext } from "../context/PodcastContext"
+import { usePodcastContext } from "../context/PodcastContext"
 
 const EpisodePage = () => {
 
   const { podcastId, episodeId } = useParams()
 
-  const { podcasts, getPodcastEpisodes } = useContext(PodcastContext)
+  const { podcasts, getPodcastEpisodes } = usePodcastContext()
 
   const [ episodes, setEpisodes ] = useState([])
 

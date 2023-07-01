@@ -1,7 +1,7 @@
-import { useContext, useMemo } from "react"
+import { useMemo } from "react"
 import { Col, Container, Row } from "react-bootstrap"
 import { Outlet, useParams } from "react-router-dom"
-import { PodcastContext } from "../context/PodcastContext"
+import { usePodcastContext } from "../context/PodcastContext"
 import Header from "./Header"
 import PodcastDetail from "./PodcastDetail"
 
@@ -9,7 +9,7 @@ const Layout = () => {
 
   const { podcastId } = useParams()
 
-  const { podcasts } = useContext(PodcastContext)
+  const { podcasts } = usePodcastContext()
   
   const podcast = useMemo(() => 
     podcasts?.find(podcast => podcast.id === podcastId),

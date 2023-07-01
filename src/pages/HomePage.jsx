@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Badge, Col, Form, Row } from "react-bootstrap"
 import PodcastItem from "../components/PodcastItem"
-import { PodcastContext } from "../context/PodcastContext"
+import { usePodcastContext } from "../context/PodcastContext"
 
 const HomePage = () => {
 
-  const { podcasts } = useContext(PodcastContext)
+  const { podcasts } = usePodcastContext()
 
   const [ filter, setFilter ] = useState('')
   const [ filteredPodcasts, setFilteredPodcasts ] = useState(podcasts)
