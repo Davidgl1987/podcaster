@@ -1,4 +1,4 @@
-export const URL_CORS = 'https://api.allorigins.win/get?url='
+export const URL_CORS = 'https://corsproxy.io/?'
 
 export async function fetchOrCache({ url, key, cacheTime = 24*60*60*1000 }) {
   if (!url || !key) console.error('Missing params url or key')
@@ -14,8 +14,7 @@ export async function fetchOrCache({ url, key, cacheTime = 24*60*60*1000 }) {
     }
     if (!data) {
       const response = await fetch(`${URL_CORS}${encodeURIComponent(url)}`)
-      const { contents } = await response.json();
-      data = JSON.parse(contents)
+      data = await response.json();
       data.timestamp = Date.now()
       localStorage.setItem(key, JSON.stringify(data))
     }
